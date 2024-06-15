@@ -1,15 +1,17 @@
-import './App.css';
-import Box from './components/Box';
-import Navbar from './components/Navbar';
-
+import "./App.css";
+import Box from "./components/Box";
 
 function App() {
   return (
     <>
-      <Navbar/>
-      <Box/>
+      <div className="my-5">
+        <h1 className="heading">
+          Tic Tac Toe
+        </h1>
+      </div>
+
+      <Box />
     </>
-    
   );
 }
 
