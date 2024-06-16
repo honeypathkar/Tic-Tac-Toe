@@ -18,12 +18,15 @@ export default function Box() {
     [2, 4, 6],
   ];
 
+  //If playing against computer then this function runs otherwise not
   useEffect(() => {
+    //checking for empty cells
     if (mode === "PvC" && current === "O" && !winner) {
       const emptyIndexes = board.reduce((acc, value, index) => {
         if (value === "") acc.push(index);
         return acc;
       }, []);
+      //if empty cells find then automatically added "O" there
       if (emptyIndexes.length > 0) {
         const randomIndex =
           emptyIndexes[Math.floor(Math.random() * emptyIndexes.length)];
@@ -35,6 +38,7 @@ export default function Box() {
     // eslint-disable-next-line
   }, [current, board, winner, mode]);
 
+  //Checking winner function
   const checkWinner = (currentBoard) => {
     for (let i = 0; i < winningLines.length; i++) {
       const [a, b, c] = winningLines[i];
@@ -48,17 +52,20 @@ export default function Box() {
       }
     }
 
+    //no one wins then it return "Match Tie"
     if (!currentBoard.includes("")) {
       setWinner("Match Tie");
     }
   };
 
+  //Reset game function
   const resetGame = () => {
     setBoard(["", "", "", "", "", "", "", "", ""]);
     setCurrent("X");
     setWinner(null);
   };
 
+  // Box click function for click "X" and "O"
   const handleBoxClick = (index, player = current) => {
     if (board[index] === "" && !winner) {
       let newBoard = [...board];
@@ -69,13 +76,16 @@ export default function Box() {
     }
   };
 
+  //Changing color of box on winnig condition
   const handleBoxStyle = (index) => {
+    //Finding winnig conditon boxes
     if (winner) {
       const winningChar = winner;
       const winningLineIndexes = winningLines.find((line) =>
         line.every((cellIndex) => board[cellIndex] === winningChar)
       );
 
+      //If winning condition satisfy than change the color else no
       return winningLineIndexes &&
         winningLineIndexes.includes(index) &&
         winningChar === board[index]
@@ -85,6 +95,7 @@ export default function Box() {
     return {};
   };
 
+  //Mode selecting fuction for selecting mode
   const handleModeSelection = (selectedMode) => {
     setMode(selectedMode);
     resetGame(); // Reset the game whenever a new mode is selected
@@ -92,6 +103,7 @@ export default function Box() {
 
   return (
     <div className="my-5 container">
+      {/* If mode not selected show this */}
       {!mode && (
         <div className="text-center">
           <h2>Select Game Mode</h2>
@@ -111,6 +123,7 @@ export default function Box() {
           </div>
         </div>
       )}
+      {/* If have selected show this */}
       {mode && (
         <>
           <div className="box-container">
@@ -127,6 +140,7 @@ export default function Box() {
               );
             })}
           </div>
+          {/* Showing turn only if no one is winner */}
           {!winner && (
             <h2 className="my-3" style={{ textAlign: "center" }}>
               Current Player:{" "}
@@ -137,6 +151,7 @@ export default function Box() {
                 : current}
             </h2>
           )}
+          {/* Showing winner according to mode if mode is  "PvC" Then computer wins or You won and if mode is "PvP" Then X won or O won */}
           {winner && (
             <h2 style={{ textAlign: "center" }} className="my-3">
               {winner === "Match Tie"
@@ -149,14 +164,17 @@ export default function Box() {
             </h2>
           )}
           <div className="button-container">
+            {/* Going back to mode selction */}
             <button
               onClick={() => setMode(null)}
               className="btn btn-outline-dark button1 my-2"
             >
               &larr; Back
             </button>
+            {/* If not of winner then button is disabled */}
             <button
               onClick={resetGame}
+              disabled={winner ? false : true}
               className="btn btn-outline-dark button1 my-2 mx-2"
             >
               Reset Game
