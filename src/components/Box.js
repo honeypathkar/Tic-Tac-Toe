@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
+import ClickSound from "./sounds/click_sound.wav";
+import StartSound from "./sounds/start.wav";
 
 export default function Box() {
   const [mode, setMode] = useState(null); // null, 'PvC', 'PvP'
   const [board, setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
   const [current, setCurrent] = useState("X");
   const [winner, setWinner] = useState(null);
+  const [click] = useState(new Audio(ClickSound));
+  const [start] = useState(new Audio(StartSound));
 
   const winningLines = [
     [0, 1, 2],
@@ -32,7 +36,7 @@ export default function Box() {
           emptyIndexes[Math.floor(Math.random() * emptyIndexes.length)];
         setTimeout(() => {
           handleBoxClick(randomIndex, "O");
-        }, 800);
+        }, 1020);
       }
     }
     // eslint-disable-next-line
@@ -73,6 +77,7 @@ export default function Box() {
       setBoard(newBoard);
       checkWinner(newBoard);
       setCurrent(player === "X" ? "O" : "X");
+      click.play();
     }
   };
 
@@ -99,6 +104,7 @@ export default function Box() {
   const handleModeSelection = (selectedMode) => {
     setMode(selectedMode);
     resetGame(); // Reset the game whenever a new mode is selected
+    start.play();
   };
 
   return (
