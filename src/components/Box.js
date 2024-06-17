@@ -89,7 +89,7 @@ export default function Box() {
       return winningLineIndexes &&
         winningLineIndexes.includes(index) &&
         winningChar === board[index]
-        ? { color: "#69ff69" }
+        ? { color: "red" }
         : {};
     }
     return {};
@@ -102,12 +102,15 @@ export default function Box() {
   };
 
   return (
-    <div className="my-5 container">
+    <div className="my-5">
       {/* If mode not selected show this */}
       {!mode && (
-        <div className="text-center">
+        <div className="text-center" style={{ marginTop: "60px" }}>
           <h2>Select Game Mode</h2>
-          <div className="d-flex justify-content-center">
+          <div
+            className="d-grid justify-content-center"
+            style={{ marginTop: "60px" }}
+          >
             <button
               onClick={() => handleModeSelection("PvP")}
               className="btn btn-outline-dark my-2 mx-2"
@@ -142,7 +145,7 @@ export default function Box() {
           </div>
           {/* Showing turn only if no one is winner */}
           {!winner && (
-            <h2 className="my-3" style={{ textAlign: "center" }}>
+            <h2 className="my-3 text-center">
               Current Player:{" "}
               {mode === "PvC"
                 ? current === "X"
@@ -153,7 +156,7 @@ export default function Box() {
           )}
           {/* Showing winner according to mode if mode is  "PvC" Then computer wins or You won and if mode is "PvP" Then X won or O won */}
           {winner && (
-            <h2 style={{ textAlign: "center" }} className="my-3">
+            <h2 className="my-3 text-center">
               {winner === "Match Tie"
                 ? `Result : ${winner}`
                 : mode === "PvC"

@@ -1,3 +1,7 @@
+* {
+  font-family: "Cinzel", serif;
+}
+
 .box-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -5,10 +9,11 @@
   max-width: 100px;
   margin: auto;
   justify-content: center;
+  gap: 5px
 }
 
 .heading {
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Bungee", sans-serif;
   font-size: 50px;
   text-align: center;
 }
@@ -19,9 +24,12 @@
   height: 150px;
   margin: 0 0 -2px -2px;
   border: 2px solid #000;
-  background-color: white;
+  background-image: url("./components/images/board.jpg");
   cursor: pointer;
   font-size: 80px;
+  border-radius: 7%;
+  font-weight: bold;
+  padding-top: 10px;
 }
 
 .button-container {
