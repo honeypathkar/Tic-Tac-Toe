@@ -3,14 +3,13 @@ import Box from "./components/Box";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <Router>
       <div>
-        <div className="my-5">
-          <h1 className="heading">Tic Tac Toe</h1>
-        </div>
+        <Navbar />
         <Routes>
           <Route exact path="/Tic-Tac-Toe/" element={<Box />} />
           <Route exact path="/login" element={<Login />} />

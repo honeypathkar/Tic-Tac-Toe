@@ -102,26 +102,6 @@
   font-weight: 600;
 }
 
-.form .submit {
-  padding: 1rem 0.75rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: 3rem;
-  background-color: var(--bg-dark);
-  color: var(--bg-light);
-  border: none;
-  cursor: pointer;
-  transition: all 300ms;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.form .submit:hover {
-  background-color: var(--clr);
-  color: var(--bg-dark);
-}
 
 .span {
   text-decoration: none;

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import ClickSound from "./sounds/click_sound.wav";
 import StartSound from "./sounds/start.wav";
-import { Link } from "react-router-dom";
 
 export default function Box() {
   const [mode, setMode] = useState(null); // null, 'PvC', 'PvP'
@@ -130,9 +129,6 @@ export default function Box() {
             >
               Player vs Computer
             </button>
-            <Link to="/login" className="btn-outline-dark btn">
-              Login
-            </Link>
           </div>
         </div>
       )}
