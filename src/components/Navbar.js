@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,18 +41,7 @@ const Navbar = () => {
               className="outline-none mobile-menu-button"
               onClick={toggleMenu}
             >
-              <svg
-                className=" w-6 h-6 text-gray-500 hover:text-green-500 "
-                x-show="!showMenu"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M4 6h16M4 12h16m-7 6h7"></path>
-              </svg>
+              <MenuIcon/>
             </button>
           </div>
         </div>
